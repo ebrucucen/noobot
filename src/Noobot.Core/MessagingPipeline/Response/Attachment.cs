@@ -20,6 +20,10 @@ namespace Noobot.Core.MessagingPipeline.Response
         public string Color { get; set; }
 
         public List<AttachmentField> AttachmentFields { get; set; }
+        public string Pretext { get; set; }
+        public string AuthorLink { get; set; }
+        public string AuthorIcon { get; set; }
+        public string TitleLink { get; set; }
 
         public Attachment AddAttachmentField(string title, string value)
         {

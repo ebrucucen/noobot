@@ -219,7 +219,11 @@ namespace Noobot.Core
                         ThumbUrl = attachment.ThumbUrl,
                         AuthorName = attachment.AuthorName,
                         ColorHex = attachment.Color,
-                        Fields = GetAttachmentFields(attachment)
+                        Fields = GetAttachmentFields(attachment),
+                        AuthorIcon = attachment.AuthorIcon,
+                        AuthorLink = attachment.AuthorLink,
+                        PreText = attachment.Pretext,
+                        TitleLink = attachment.TitleLink
                     });
                 }
             }
