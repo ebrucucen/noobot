@@ -1,0 +1,3 @@
+[submodule "SlackConnector"]
+	path = SlackConnector
+	url = https://github.com/ebrucucen/SlackConnector.git

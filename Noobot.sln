@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noobot.Tests.Unit", "tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noobot.Console", "src\Noobot.Console\Noobot.Console.csproj", "{1D96ECC7-47A3-4A43-9552-E2C180DD7CAE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlackConnector", "SlackConnector\src\SlackConnector\SlackConnector.csproj", "{C1327804-47C2-4FF5-A60C-54A634E484A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{1D96ECC7-47A3-4A43-9552-E2C180DD7CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D96ECC7-47A3-4A43-9552-E2C180DD7CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D96ECC7-47A3-4A43-9552-E2C180DD7CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1327804-47C2-4FF5-A60C-54A634E484A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1327804-47C2-4FF5-A60C-54A634E484A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1327804-47C2-4FF5-A60C-54A634E484A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1327804-47C2-4FF5-A60C-54A634E484A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
