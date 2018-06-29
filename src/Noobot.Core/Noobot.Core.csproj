@@ -13,8 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SlackConnector" Version="4.1.48" />
     <PackageReference Include="Common.Logging" Version="3.4.1" />
     <PackageReference Include="StructureMap" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SlackConnector\src\SlackConnector\SlackConnector.csproj" />
   </ItemGroup>
 </Project>

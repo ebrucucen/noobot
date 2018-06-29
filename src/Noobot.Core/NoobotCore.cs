@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Common.Logging;
+﻿using Common.Logging;
 using Noobot.Core.Configuration;
 using Noobot.Core.DependencyResolution;
 using Noobot.Core.Extensions;
@@ -16,6 +11,11 @@ using Noobot.Core.Plugins;
 using Noobot.Core.Plugins.StandardPlugins;
 using SlackConnector;
 using SlackConnector.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Noobot.Core
 {
@@ -188,7 +188,7 @@ namespace Noobot.Core
                     {
                         ChatHub = chatHub,
                         Text = responseMessage.Text,
-                        Attachments = GetAttachments(responseMessage.Attachments)
+                        Attachments = responseMessage.Attachments?.Select(MapAttachment).ToList()
                     };
 
                     string textTrimmed = botMessage.Text.Length > 50 ? botMessage.Text.Substring(0, 50) + "..." : botMessage.Text;
@@ -202,53 +202,45 @@ namespace Noobot.Core
             }
         }
 
-        private IList<SlackAttachment> GetAttachments(List<Attachment> attachments)
+        private static SlackAttachment MapAttachment(Attachment attachment)
         {
-            var slackAttachments = new List<SlackAttachment>();
-
-            if (attachments != null)
+            return new SlackAttachment
             {
-                foreach (var attachment in attachments)
-                {
-                    slackAttachments.Add(new SlackAttachment
-                    {
-                        Text = attachment.Text,
-                        Title = attachment.Title,
-                        Fallback = attachment.Fallback,
-                        ImageUrl = attachment.ImageUrl,
-                        ThumbUrl = attachment.ThumbUrl,
-                        AuthorName = attachment.AuthorName,
-                        ColorHex = attachment.Color,
-                        Fields = GetAttachmentFields(attachment),
-                        AuthorIcon = attachment.AuthorIcon,
-                        AuthorLink = attachment.AuthorLink,
-                        PreText = attachment.Pretext,
-                        TitleLink = attachment.TitleLink
-                    });
-                }
-            }
-
-            return slackAttachments;
+                Text = attachment.Text,
+                Title = attachment.Title,
+                Fallback = attachment.Fallback,
+                ImageUrl = attachment.ImageUrl,
+                ThumbUrl = attachment.ThumbUrl,
+                AuthorName = attachment.AuthorName,
+                ColorHex = attachment.Color,
+                Fields = attachment.AttachmentFields?.Select(MapAttachmentField).ToList(),
+                Actions = attachment.AttachmentActions?.Select(MapAction).ToList(),
+                AuthorIcon = attachment.AuthorIcon,
+                AuthorLink = attachment.AuthorLink,
+                PreText = attachment.Pretext,
+                TitleLink = attachment.TitleLink
+            };
         }
 
-        private IList<SlackAttachmentField> GetAttachmentFields(Attachment attachment)
+        private static SlackAttachmentAction MapAction(AttachmentAction action)
         {
-            var attachmentFields = new List<SlackAttachmentField>();
-
-            if (attachment?.AttachmentFields != null)
+            return new SlackAttachmentAction
             {
-                foreach (var attachmentField in attachment.AttachmentFields)
-                {
-                    attachmentFields.Add(new SlackAttachmentField
-                    {
-                        Title = attachmentField.Title,
-                        Value = attachmentField.Value,
-                        IsShort = attachmentField.IsShort
-                    });
-                }
-            }
+                Text = action.Text,
+                Url = action.Url,
+                Style = action.Style,
+                Type = action.Type
+            };
+        }
 
-            return attachmentFields;
+        private static SlackAttachmentField MapAttachmentField(AttachmentField attachmentField)
+        {
+            return new SlackAttachmentField
+            {
+                Title = attachmentField.Title,
+                Value = attachmentField.Value,
+                IsShort = attachmentField.IsShort
+            };
         }
 
         public string GetUserIdForUsername(string username)
