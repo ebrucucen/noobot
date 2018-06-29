@@ -16,8 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SlackConnector\src\SlackConnector\SlackConnector.csproj" />
     <ProjectReference Include="..\..\src\Noobot.Core\Noobot.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SlackConnector">
+      <HintPath>..\..\..\..\noobot\SlackConnector\src\SlackConnector\bin\Debug\netstandard2.0\SlackConnector.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

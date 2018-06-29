@@ -15,10 +15,13 @@
 
   <ItemGroup>
     <PackageReference Include="Common.Logging" Version="3.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="StructureMap" Version="4.5.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SlackConnector\src\SlackConnector\SlackConnector.csproj" />
+    <Reference Include="SlackConnector">
+      <HintPath>..\..\..\..\noobot\SlackConnector\src\SlackConnector\bin\Debug\netstandard2.0\SlackConnector.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
