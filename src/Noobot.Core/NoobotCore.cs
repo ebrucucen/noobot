@@ -182,6 +182,19 @@ namespace Noobot.Core
                     _log.Info($"Indicating typing on channel '{chatHub.Name}'");
                     await _connection.IndicateTyping(chatHub);
                 }
+                else if (responseMessage is UploadMessage)
+                {
+                    var uploadMessage = responseMessage as UploadMessage;
+
+                    if (uploadMessage.Type == UploadMessage.UploadType.Disk)
+                    {
+                        await _connection.Upload(chatHub, uploadMessage.FilePath);
+                    }
+                    else if (uploadMessage.Type == UploadMessage.UploadType.Stream)
+                    {
+                        await _connection.Upload(chatHub, uploadMessage.Stream, uploadMessage.FileName);
+                    }
+                }
                 else
                 {
                     var botMessage = new BotMessage
@@ -201,6 +214,7 @@ namespace Noobot.Core
                 _log.Error($"Unable to find channel for message '{responseMessage.Text}'. Message not sent");
             }
         }
+
 
         private static SlackAttachment MapAttachment(Attachment attachment)
         {

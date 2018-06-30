@@ -1,5 +1,6 @@
 ﻿using Noobot.Core.MessagingPipeline.Response;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Noobot.Core.MessagingPipeline.Request
 {
@@ -108,6 +109,26 @@ namespace Noobot.Core.MessagingPipeline.Request
         public ResponseMessage IndicateTypingOnDirectMessage()
         {
             return ResponseMessage.DirectUserMessage(UserChannel, UserId, string.Empty, new TypingIndicatorMessage());
+        }
+
+        public ResponseMessage UploadToChannel(string filePath)
+        {
+            return ResponseMessage.ChannelMessage(Channel, string.Empty, attachment: null, message: new UploadMessage(filePath));
+        }
+
+        public ResponseMessage UploadDirectlyToUser(string filePath)
+        {
+            return ResponseMessage.DirectUserMessage(UserChannel, UserId, string.Empty, new UploadMessage(filePath));
+        }
+
+        public ResponseMessage UploadToChannel(Stream stream, string fileName)
+        {
+            return ResponseMessage.ChannelMessage(Channel, string.Empty, attachment: null, message: new UploadMessage(stream, fileName));
+        }
+
+        public ResponseMessage UploadDirectlyToUser(Stream stream, string fileName)
+        {
+            return ResponseMessage.DirectUserMessage(UserChannel, UserId, string.Empty, new UploadMessage(stream, fileName));
         }
     }
 }
