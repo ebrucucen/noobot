@@ -9,7 +9,7 @@ dotnet_csproj:
   package_version: '{version}'
 before_build:
 - ps: >-
-    dotnet restore -f "netcoreapp2.0"
+    dotnet restore ".\Noobot.sln"
 
     Push-Location "src\Noobot.Console\Configuration\"
 
