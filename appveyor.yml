@@ -9,16 +9,16 @@ dotnet_csproj:
   package_version: '{version}'
 before_build:
 - ps: >-
-
+    dotnet restore -f "netcoreapp2.0"
     Push-Location "src/Noobot.Console/Configuration/"
 
     copy "config.default.json" "config.json"
 
     Pop-Location
-build: off
-
-build_script:
-- cmd: dotnet build ".\Noobot.sln" -c "Release" -r "win-x64" -f "netcoreapp2.0"
+build:
+  publish_nuget: true
+  include_nuget_references: true
+  verbosity: minimal
 
 before_package:
 - cmd: dotnet publish ".\src\Noobot.Console\Noobot.Console.csproj" -c "Release" -r "win-x64" -f "netcoreapp2.0"
