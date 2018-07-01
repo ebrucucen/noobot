@@ -9,7 +9,6 @@ dotnet_csproj:
   package_version: '{version}'
 before_build:
 - ps: >-
-    dotnet restore
 
     Push-Location "src/Noobot.Console/Configuration/"
 
