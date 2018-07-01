@@ -11,7 +11,7 @@ before_build:
 - ps: >-
     dotnet restore -f "netcoreapp2.0"
 
-    Push-Location ".\src\Noobot.Console\Configuration\"
+    Push-Location "src\Noobot.Console\Configuration\"
 
     copy "config.default.json" "config.json"
 
