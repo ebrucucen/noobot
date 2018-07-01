@@ -5,16 +5,17 @@
     <Version>1.0.1</Version>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
-    <Description>Noobot Core allows you to host your own SlackBot wrapped up in Noobot joy. Please see project website for examples.</Description>
+    <Description>Demo version of Noobot Core, relies on SlackConnector_Demo, allows you to host your own SlackBot wrapped up in Noobot joy. Please see project website for examples.</Description>
     <PackageProjectUrl>http://github.com/noobot/noobot/</PackageProjectUrl>
-    <PackageTags>noobot Slack API SlackApi SlackConnector bot slackbot</PackageTags>
+    <PackageTags>noobot Slack API SlackApi SlackConnector bot slackbot demo</PackageTags>
     <PackageIconUrl>http://github.com/noobot/noobot/</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/noobot/noobot/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageId>Noobot.Core_Demo</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Common.Logging" Version="3.4.1" />
-    <PackageReference Include="SlackConnector" Version="4.1.52.5" />
+    <PackageReference Include="SlackConnector_Demo" Version="4.1.52.7" />
     <PackageReference Include="StructureMap" Version="4.5.2" />
   </ItemGroup>
 </Project>
