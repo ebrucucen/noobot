@@ -41,7 +41,7 @@ deploy:
 - provider: GitHub
   auth_token:
     secure: C84vi0K9LH3m0DN0dITWoJ09qb3sAcyqqkHsWWUE8EAlC2Xj7p9G+VcPVDKqkH+L
-  artifact: nupkgs\*.nupkg
+  artifact: /.*\.nupkg/
   draft: true
   on:
     branch: Demo_connector_core
