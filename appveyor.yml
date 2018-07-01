@@ -45,3 +45,8 @@ deploy:
   draft: true
   on:
     branch: Demo_connector_core
+- provider: NuGet
+    api_key:
+      secure: plRDYwon8pwi05DRJphtaEajFmZrva/9GPWHvCXavPE=
+    skip_symbols: true
+    artifact: /.*\.nupkg/
