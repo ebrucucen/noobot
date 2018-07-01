@@ -1,12 +1,17 @@
 version: 3.1.55.{build}
+
 skip_tags: true
+
 image: Visual Studio 2017
+
 configuration: Release
+
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
   package_version: '{version}'
+
 before_build:
 - ps: >-
     dotnet restore ".\Noobot.sln" -r "win-x64"
@@ -14,31 +19,27 @@ before_build:
     Push-Location "src\Noobot.Console\Configuration\"
 
     copy "config.default.json" "config.json"
-
     Pop-Location
-build:
-  publish_nuget: true
-  include_nuget_references: true
-  verbosity: minimal
+build: off
 
-before_package:
-- cmd: dotnet publish ".\src\Noobot.Console\Noobot.Console.csproj" -c "Release" -r "win-x64" -f "netcoreapp2.0"
-after_build:
-- ps: >-
-    $buildPath = Resolve-Path ".\src\Noobot.Console\bin\Release\*\*\publish"
+build_script: dotnet build -c "Release" -r "win-x64" -f "netcoreapp2.0"
 
-    Write-Host "Zipping $buildPath"
-
-    7z a noobot.zip "$buildPath\*"
+after_build: dotnet pack  ".\src\Noobot.Core\Noobot.Core.csproj" --configuration Release --output ".\nupkgs" --no-build --no-restore --runtime "win-x64" 
 
 test: off
+
+nuget:
+  project_feed: true
+  disable_publish_on_pr: true
+
 artifacts:
-- path: noobot.zip
+    -path: nupkgs\*.nupkg
+
 deploy:
 - provider: GitHub
   auth_token:
     secure: 8t4+xbVlkXA/FY3516ThrMibGxfCT7ZcSwyZw7KNwUlCH08KMPtznY2QphEn1n/z
-  artifact: noobot.zip,/.*\.nupkg/
+  artifact: nupkgs\*.nupkg
   draft: true
   on:
     branch: master
