@@ -26,7 +26,7 @@ build: off
 
 build_script: dotnet build -c "Release" -r "win-x64" -f "netcoreapp2.0"
 
-after_build: dotnet pack  ".\src\Noobot.Core\Noobot.Core.csproj" --configuration Release --output ".\nupkgs" --no-build --no-restore --runtime "win-x64" 
+after_build: dotnet pack  ".\src\Noobot.Core\Noobot.Core.csproj" --configuration Release --output "..\..\nupkgs" --no-build --no-restore --runtime "win-x64" 
 
 test: off
 
@@ -44,4 +44,4 @@ deploy:
   artifact: nupkgs\*.nupkg
   draft: true
   on:
-    branch: master
+    branch: Demo_connector_core
