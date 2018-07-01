@@ -33,7 +33,7 @@ nuget:
   disable_publish_on_pr: true
 
 artifacts:
-    -path: nupkgs\*.nupkg
+- path: nupkgs\*.nupkg
 
 deploy:
 - provider: GitHub
