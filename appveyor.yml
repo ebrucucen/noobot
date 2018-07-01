@@ -40,7 +40,7 @@ artifacts:
 deploy:
 - provider: GitHub
   auth_token:
-    secure: 8t4+xbVlkXA/FY3516ThrMibGxfCT7ZcSwyZw7KNwUlCH08KMPtznY2QphEn1n/z
+    secure: C84vi0K9LH3m0DN0dITWoJ09qb3sAcyqqkHsWWUE8EAlC2Xj7p9G+VcPVDKqkH+L
   artifact: nupkgs\*.nupkg
   draft: true
   on:
