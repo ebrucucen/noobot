@@ -15,12 +15,10 @@ before_build:
     copy "config.default.json" "config.json"
 
     Pop-Location
-build:
-  publish_nuget: true
-  include_nuget_references: true
-  verbosity: minimal
-- ps: >-
-    dotnet build ".\Noobot.sln" -c "Release" -r "win-x64" -f "netcoreapp2.0"
+build: off
+
+build_script:
+- cmd: dotnet build ".\Noobot.sln" -c "Release" -r "win-x64" -f "netcoreapp2.0"
 
 before_package:
 - cmd: dotnet publish ".\src\Noobot.Console\Noobot.Console.csproj" -c "Release" -r "win-x64" -f "netcoreapp2.0"
