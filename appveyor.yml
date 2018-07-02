@@ -14,7 +14,7 @@ dotnet_csproj:
 
 before_build:
 - ps: >-
-    dotnet restore ".\Noobot.sln" -r "win-x64"
+    dotnet restore ".\Noobot.sln" 
 
     Push-Location "src/Noobot.Console/Configuration/"
 
@@ -24,9 +24,10 @@ before_build:
 
 build: off
 
-build_script: dotnet build -c "Release" -r "win-x64" -f "netcoreapp2.0"
+build_script: 
+- cmd:  dotnet build -c "Release" 
 
-after_build: dotnet pack  ".\src\Noobot.Core\Noobot.Core.csproj" --configuration Release --output "..\..\nupkgs" --no-build --no-restore --runtime "win-x64" 
+after_build: dotnet pack  ".\src\Noobot.Core\Noobot.Core.csproj" --configuration Release --output "..\..\nupkgs" --no-build --no-restore 
 
 test: off
 

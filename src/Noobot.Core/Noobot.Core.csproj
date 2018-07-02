@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+	<RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <Version>1.0.1</Version>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
@@ -11,8 +11,8 @@
     <PackageIconUrl>http://github.com/noobot/noobot/</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/noobot/noobot/blob/master/LICENSE</PackageLicenseUrl>
     <PackageId>Noobot.Core_Demo</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Common.Logging" Version="3.4.1" />
     <PackageReference Include="SlackConnector_Demo" Version="4.1.52.7" />
